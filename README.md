@@ -1,24 +1,42 @@
-# README
+# 環境構築
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 1. ローカルにリポジトリをコピーする
 
-Things you may want to cover:
+- ターミナルでリポジトリをコピーしたいディレクトリに移動します。
+```bash
+$ cd ~/desktop
+```
+- git cloneでリモートリポジトリをローカルにコピーします。
+```bash
+$ git clone https://github.com/aisaka-1653/rails-docker.git
+```
 
-* Ruby version
+## 2. docker-composeを実行する
 
-* System dependencies
+- コピーされたディレクトリに移動します。
+```bash
+$ cd ~/desktop/rails-docker
+```
+- **初回起動時のみ**以下のコマンドを実行してdatabaseを作成します。
+```bash
+$ docker-compose run --rm web rails db:create
+```
 
-* Configuration
 
-* Database creation
+- docker-composeを実行します。
+```bash
+$ docker-compose up
+```
+- detachモードで実行する事もできます。
+```bash
+$ docker-compose up -d
+```
 
-* Database initialization
+- `Listening on http://0.0.0.0:3000`がlogに表示されます。
+- [http://localhost:3000](http://localhost:3000)にアクセスして、Tasksと書かれたページが表示されていれば完了です。
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## version
+- Ruby 3.22
+- Node.js 18.13
+- Rails 7.0.6
+- PostgreSQL 12.17
